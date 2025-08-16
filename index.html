@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystical Tarot - Learn & Read Cards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-moon"></i>
+                <span>Mystical Tarot</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active" data-section="home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#deck" class="nav-link" data-section="deck">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Card Deck</span>
+                </a>
+                <a href="#readings" class="nav-link" data-section="readings">
+                    <i class="fas fa-magic"></i>
+                    <span>Readings</span>
+                </a>
+                <a href="#learn" class="nav-link" data-section="learn">
+                    <i class="fas fa-book-open"></i>
+                    <span>Learn</span>
+                </a>
+                <a href="#journal" class="nav-link" data-section="journal">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>Journal</span>
+                </a>
+            </div>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Welcome to Your Tarot Journey</h1>
+                    <p class="hero-subtitle">Discover the ancient wisdom of tarot cards through interactive learning and guided readings</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" onclick="showSection('readings')">
+                            <i class="fas fa-magic"></i>
+                            Start a Reading
+                        </button>
+                        <button class="btn btn-secondary" onclick="showSection('learn')">
+                            <i class="fas fa-book-open"></i>
+                            Learn Tarot
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-cards">
+                    <div class="floating-card card-1">
+                        <div class="tarot-card" data-card="the-fool">
+                            <div class="card-back"></div>
+                        </div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <div class="tarot-card" data-card="the-magician">
+                            <div class="card-back"></div>
+                        </div>
+                    </div>
+                    <div class="floating-card card-3">
+                        <div class="tarot-card" data-card="the-high-priestess">
+                            <div class="card-back"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>78</h3>
+                        <p>Tarot Cards</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>5</h3>
+                        <p>Reading Spreads</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>∞</h3>
+                        <p>Learning Paths</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-feather-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="journal-count">0</h3>
+                        <p>Journal Entries</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Card Deck Section -->
+        <section id="deck" class="section">
+            <div class="section-header">
+                <h2>Tarot Card Deck</h2>
+                <p>Explore all 78 cards in the traditional Rider-Waite tarot deck</p>
+            </div>
+
+            <!-- Deck Filters -->
+            <div class="deck-filters">
+                <button class="filter-btn active" data-filter="all">All Cards</button>
+                <button class="filter-btn" data-filter="major">Major Arcana</button>
+                <button class="filter-btn" data-filter="cups">Cups</button>
+                <button class="filter-btn" data-filter="wands">Wands</button>
+                <button class="filter-btn" data-filter="swords">Swords</button>
+                <button class="filter-btn" data-filter="pentacles">Pentacles</button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="card-search" placeholder="Search cards by name or meaning...">
+                <i class="fas fa-search"></i>
+            </div>
+
+            <!-- Card Grid -->
+            <div class="card-grid" id="card-grid">
+                <!-- Cards will be dynamically generated here -->
+            </div>
+        </section>
+
+        <!-- Readings Section -->
+        <section id="readings" class="section">
+            <div class="section-header">
+                <h2>Tarot Readings</h2>
+                <p>Choose a spread and let the cards guide you</p>
+            </div>
+
+            <!-- Reading Options -->
+            <div class="reading-options">
+                <div class="spread-card" data-spread="single">
+                    <div class="spread-icon">
+                        <i class="fas fa-square"></i>
+                    </div>
+                    <h3>Single Card</h3>
+                    <p>Perfect for daily guidance or quick insights</p>
+                    <button class="btn btn-primary">Start Reading</button>
+                </div>
+                <div class="spread-card" data-spread="three-card">
+                    <div class="spread-icon">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <h3>Three Card Spread</h3>
+                    <p>Past, Present, Future or Situation, Action, Outcome</p>
+                    <button class="btn btn-primary">Start Reading</button>
+                </div>
+                <div class="spread-card" data-spread="celtic-cross">
+                    <div class="spread-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <h3>Celtic Cross</h3>
+                    <p>Comprehensive 10-card spread for deep insights</p>
+                    <button class="btn btn-primary">Start Reading</button>
+                </div>
+                <div class="spread-card" data-spread="relationship">
+                    <div class="spread-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Relationship Spread</h3>
+                    <p>Explore connections and relationships</p>
+                    <button class="btn btn-primary">Start Reading</button>
+                </div>
+            </div>
+
+            <!-- Reading Area -->
+            <div class="reading-area" id="reading-area" style="display: none;">
+                <div class="reading-header">
+                    <h3 id="reading-title">Single Card Reading</h3>
+                    <button class="btn btn-secondary" onclick="resetReading()">
+                        <i class="fas fa-redo"></i>
+                        New Reading
+                    </button>
+                </div>
+                <div class="card-spread" id="card-spread">
+                    <!-- Spread layout will be generated here -->
+                </div>
+                <div class="reading-interpretation" id="reading-interpretation">
+                    <!-- Card interpretations will appear here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Learn Section -->
+        <section id="learn" class="section">
+            <div class="section-header">
+                <h2>Learn Tarot</h2>
+                <p>Master the art of tarot reading with our comprehensive guides</p>
+            </div>
+
+            <div class="learning-modules">
+                <div class="module-card">
+                    <div class="module-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Tarot Basics</h3>
+                    <p>Learn about the structure of tarot, Major and Minor Arcana, and basic principles</p>
+                    <button class="btn btn-primary" onclick="showLearningModule('basics')">Start Learning</button>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Major Arcana</h3>
+                    <p>Explore the 22 cards of the Major Arcana and their deep spiritual meanings</p>
+                    <button class="btn btn-primary" onclick="showLearningModule('major')">Explore Cards</button>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Minor Arcana</h3>
+                    <p>Understand the four suits and their everyday life applications</p>
+                    <button class="btn btn-primary" onclick="showLearningModule('minor')">Learn Suits</button>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Reading Techniques</h3>
+                    <p>Master different spreads and interpretation methods</p>
+                    <button class="btn btn-primary" onclick="showLearningModule('techniques')">Practice Reading</button>
+                </div>
+            </div>
+
+            <!-- Learning Content Area -->
+            <div class="learning-content" id="learning-content" style="display: none;">
+                <!-- Dynamic learning content will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Journal Section -->
+        <section id="journal" class="section">
+            <div class="section-header">
+                <h2>Reading Journal</h2>
+                <p>Keep track of your readings and insights</p>
+            </div>
+
+            <div class="journal-actions">
+                <button class="btn btn-primary" onclick="showNewEntryForm()">
+                    <i class="fas fa-plus"></i>
+                    New Entry
+                </button>
+                <button class="btn btn-secondary" onclick="exportJournal()">
+                    <i class="fas fa-download"></i>
+                    Export Journal
+                </button>
+            </div>
+
+            <!-- New Entry Form -->
+            <div class="journal-form" id="journal-form" style="display: none;">
+                <h3>New Journal Entry</h3>
+                <form onsubmit="saveJournalEntry(event)">
+                    <div class="form-group">
+                        <label for="entry-title">Title</label>
+                        <input type="text" id="entry-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="entry-spread">Spread Used</label>
+                        <select id="entry-spread">
+                            <option value="single">Single Card</option>
+                            <option value="three-card">Three Card</option>
+                            <option value="celtic-cross">Celtic Cross</option>
+                            <option value="relationship">Relationship</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="entry-cards">Cards Drawn</label>
+                        <input type="text" id="entry-cards" placeholder="e.g., The Fool, Three of Cups, The Star">
+                    </div>
+                    <div class="form-group">
+                        <label for="entry-question">Question Asked</label>
+                        <textarea id="entry-question" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="entry-interpretation">Your Interpretation</label>
+                        <textarea id="entry-interpretation" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="entry-insights">Personal Insights</label>
+                        <textarea id="entry-insights" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Entry</button>
+                        <button type="button" class="btn btn-secondary" onclick="hideNewEntryForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Journal Entries -->
+            <div class="journal-entries" id="journal-entries">
+                <!-- Journal entries will be displayed here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Card Detail Modal -->
+    <div class="modal" id="card-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-card-name">Card Name</h3>
+                <button class="modal-close" onclick="closeCardModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-card-display">
+                    <div class="tarot-card large" id="modal-card">
+                        <div class="card-back"></div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-details">
+                            <p class="card-type" id="modal-card-type">Major Arcana</p>
+                            <p class="card-number" id="modal-card-number">0</p>
+                            <p class="card-element" id="modal-card-element">Air</p>
+                        </div>
+                        <div class="card-keywords">
+                            <h4>Keywords</h4>
+                            <div class="keywords-list" id="modal-keywords">
+                                <!-- Keywords will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-meanings">
+                    <div class="meaning-section">
+                        <h4><i class="fas fa-arrow-up"></i> Upright Meaning</h4>
+                        <p id="modal-upright-meaning">Upright meaning will appear here</p>
+                    </div>
+                    <div class="meaning-section">
+                        <h4><i class="fas fa-arrow-down"></i> Reversed Meaning</h4>
+                        <p id="modal-reversed-meaning">Reversed meaning will appear here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Shuffling the cards...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/tarot-data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

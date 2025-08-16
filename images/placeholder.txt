@@ -1,0 +1,16 @@
+This directory contains placeholder structure for tarot card images.
+
+Directory Structure:
+/images/
+  /major/          - Major Arcana cards (00-21)
+  /cups/           - Cups suit cards
+  /wands/          - Wands suit cards  
+  /swords/         - Swords suit cards
+  /pentacles/      - Pentacles suit cards
+
+Image Naming Convention:
+- Major Arcana: 00-the-fool.jpg, 01-the-magician.jpg, etc.
+- Minor Arcana: ace-of-cups.jpg, two-of-cups.jpg, etc.
+
+You can replace these placeholder paths with your own tarot card images.
+The app is designed to gracefully handle missing images by hiding them and showing card names instead.
